@@ -3,7 +3,7 @@ from math import cos, sin, atan
 import numpy as np
 from matplotlib.collections import PatchCollection, LineCollection
 
-verticalDistanceBetweenLayers = 10
+verticalDistanceBetweenLayers = 5.5
 horizontalDistanceBetweenNeurons = 2
 neuronRadius = 0.75
 nNeuronsInWidestLayer = 4 
@@ -133,7 +133,7 @@ edgePatches = []
 lineWidths = []
 lineColors = []
 
-def visualize_model( model, edgeSkip = 1 ):    
+def visualize_model( model, ax, edgeSkip = 1 ):    
     global neuronPatches, edgePatches, lineWidths, lineColors
     neuronPatches = []
     edgePatches = []
@@ -163,9 +163,4 @@ def visualize_model( model, edgeSkip = 1 ):
     # last layer
     network.add_layer(modelShape[nLayers-1][1])
 
-    fig, ax = plt.subplots(figsize=(15, 25));
     network.draw(ax, edgeSkip)
-    
-    plt.axis('scaled')
-    plt.axis('off')
-    plt.show()
