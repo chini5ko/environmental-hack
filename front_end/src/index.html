@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<!--
+* CoreUI - Free Bootstrap Admin Template
+* @version v2.1.15
+* @link https://coreui.io
+* Copyright (c) 2018 creativeLabs Łukasz Holeczek
+* Licensed under MIT (https://coreui.io/license)
+-->
+
+<html lang="en">
+
+<head>
+  <base href="./">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+  <meta name="author" content="Łukasz Holeczek">
+  <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+  <title>The Futurist</title>
+  <!-- Icons-->
+  <link rel="icon" type="image/ico" href="./img/favicon.png" />
+  <link href="node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+  <link href="node_modules/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+  <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="node_modules/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+  <!-- Main styles for this application-->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="vendors/pace-progress/css/pace.min.css" rel="stylesheet">
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    // Shared ID
+    gtag('config', 'UA-118965717-3');
+    // Bootstrap ID
+    gtag('config', 'UA-118965717-5');
+  </script>
+</head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+  <header class="app-header navbar">
+      <div class="text-value text-center" style="padding-left: 20px"> The Futurist  </div>
+  </header>
+  <div class="app-body">
+    <div class="sidebar">
+      <nav class="sidebar-nav">
+        <ul class="nav">
+          <li class="nav-title">Home</li>
+          <li class="nav-item" >
+              <a  class="nav-link pointer" onclick="showAnomaliesSensors()" >
+                  <i class="nav-icon icon-pencil"></i> show all anomalies</a>
+            </li>
+          <li class="nav-item" >
+              <a  class="nav-link pointer" onclick="showSensors()" >
+                  <i class="nav-icon icon-pencil"></i> show all sensors</a>
+            </li>
+            <li class="nav-item" >
+                <a  class="nav-link pointer" onclick="hideSensors()" >
+                    <i class="nav-icon icon-pencil"></i> hide all sensors</a>
+              </li>
+          <li class="divider"></li>
+          <li class="nav-title">Cases</li>
+          <!-- case -->
+          <li class="nav-item">
+              <a  class="nav-link pointer" onclick="case_1()" >
+                  <i class="nav-icon icon-pencil" ></i> A regular Day</a>
+            </li>
+             <!-- case -->
+          <li class="nav-item">
+              <a  class="nav-link pointer" onclick="case_2()" >
+                  <i class="nav-icon icon-pencil" ></i> co2 </a>
+            </li>
+                 <!-- case 3-->
+          <li class="nav-item">
+              <a  class="nav-link pointer" onclick="case_3()" >
+                  <i class="nav-icon icon-pencil" ></i> co2 and humidity</a>
+            </li>
+             <!-- case -->
+            <li class="nav-item">
+                <a  class="nav-link pointer" onclick="case_4()" >
+                    <i class="nav-icon icon-pencil" ></i> temperature</a>
+              </li>
+                   <!-- case -->
+            <li class="nav-item">
+                <a  class="nav-link pointer" onclick="case_5()" >
+                    <i class="nav-icon icon-pencil" ></i> dewpoint </a>
+              </li>
+        </ul>
+      </nav>
+    </div>
+    <main class="main">
+      <!-- Breadcrumb-->
+      <br>
+      <div class="container-fluid">
+        <div class="animated fadeIn">
+          <div class="row">
+            <!--first card-->
+            <div class="col-sm-6 col-lg-3">
+              <div id="co2Border" class="card text-white bg-greenState">
+                <div class="card-body pb-0">
+                  <div class="btn-group float-right"> </div>
+                  <img class="container-fluid" src="img/sensors/co2.png">
+                </div>
+                <div class="chart-wrapper mt-3 mx-3" style="height:10px;">
+                </div>
+                <div class="text-value text-center">Co2</div>
+              </div>
+            </div>
+            <!-- /.col-->
+            <div class="col-sm-6 col-lg-3">
+              <div id="tempBorder" class="card text-white bg-greenState">
+                <div class="card-body pb-0">
+                  <div class="btn-group float-right"> </div>
+                  <img class="container-fluid" src="img/sensors/temp.png">
+                </div>
+                <div class="chart-wrapper mt-3 mx-3" style="height:10px;">
+                </div>
+                <div class="text-value text-center">Temperature</div>
+              </div>
+            </div>
+            <!-- /.col-->
+            <div class="col-sm-6 col-lg-3">
+              <div id="dewPointBorder" class="card text-white bg-greenState">
+                <div class="card-body pb-0">
+                  <div class="btn-group float-right"> </div>
+                  <img class="container-fluid" src="img/sensors/dew.png">
+                </div>
+                <div class="chart-wrapper mt-3 mx-3" style="height:10px;">
+                </div>
+                <div class="text-value text-center">Dewpoint</div>
+              </div>
+            </div>
+            <!-- /.col-->
+            <div class="col-sm-6 col-lg-3">
+              <div id="humidityBorder" class="card text-white bg-greenState">
+                <div class="card-body pb-0">
+                  <div class="btn-group float-right"> </div>
+                  <img class="container-fluid" src="img/sensors/hum.png">
+                </div>
+                <div class="chart-wrapper mt-3 mx-3" style="height:10px;">
+                </div>
+                <div class="text-value text-center">Humidity</div>
+              </div>
+            </div>
+            <!-- /.col-->
+          </div>
+
+          <!-- /.card-->
+          <div class="row">
+
+          <!-- Co2 cards-->
+             <div id="card_0" class="col-sm-6 col-lg-3">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-danger">
+                    <h1 class="text-value text-center">Co2</h1>
+                    <div class="chart-wrapper">
+                      <canvas id="social-box-chart-1" height="90"></canvas>
+                    </div>
+                  </div>
+                  <div class="brand-card-body">
+                    <div>
+                      <div class="text-value">1</div>
+                      <div class="text-uppercase text-muted small">Location</div>
+                    </div>
+                    <div>
+                      <div class="text-value">Above</div>
+                      <div class="text-uppercase text-muted small">Average</div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          
+            <div id="card_1" class="col-sm-6 col-lg-3">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-danger">
+                    <div class="text-value text-center">Co2</div>
+                    <div class="chart-wrapper">
+                      <canvas id="social-box-chart-1" height="90"></canvas>
+                    </div>
+                  </div>
+                  <div class="brand-card-body">
+                    <div>
+                      <div class="text-value">2</div>
+                      <div class="text-uppercase text-muted small">Location</div>
+                    </div>
+                    <div>
+                      <div class="text-value">Above</div>
+                      <div class="text-uppercase text-muted small">Average</div>
+                    </div>
+                  </div>
+                </div>
+              
+
+            </div>
+            
+           <div id="card_2" class="col-sm-6 col-lg-3">
+              <div class="brand-card">
+                <div class="brand-card-header bg-danger">
+                  <div class="text-value text-center">Co2</div>
+                  <div class="chart-wrapper">
+                    <canvas id="social-box-chart-1" height="90"></canvas>
+                  </div>
+                </div>
+                <div class="brand-card-body">
+                  <div>
+                    <div class="text-value">3</div>
+                    <div class="text-uppercase text-muted small">Location</div>
+                  </div>
+                  <div>
+                    <div class="text-value">Above</div>
+                    <div class="text-uppercase text-muted small">Average</div>
+                  </div>
+                </div>
+              </div>
+            
+
+           </div>
+
+           <div id="card_3" class="col-sm-6 col-lg-3">
+              <div class="brand-card">
+                <div class="brand-card-header bg-danger">
+                  <div class="text-value text-center">Co2</div>
+                  <div class="chart-wrapper">
+                    <canvas id="social-box-chart-1" height="90"></canvas>
+                  </div>
+                </div>
+                <div class="brand-card-body">
+                  <div>
+                    <div class="text-value">4</div>
+                    <div class="text-uppercase text-muted small">Location</div>
+                  </div>
+                  <div>
+                    <div class="text-value">Above</div>
+                    <div class="text-uppercase text-muted small">Average</div>
+                  </div>
+                </div>
+              </div>
+            
+
+           </div>
+            <!-- end row/-->
+
+              <!-- temp cards-->
+              <div id="card_4" class="col-sm-6 col-lg-3">
+                  <div class="brand-card">
+                    <div class="brand-card-header bg-danger">
+                      <h1 class="text-value text-center">sensor</h1>
+                      <div class="chart-wrapper">
+                        <canvas id="social-box-chart-1" height="90"></canvas>
+                      </div>
+                    </div>
+                    <div class="brand-card-body">
+                      <div>
+                        <div class="text-value">1</div>
+                        <div class="text-uppercase text-muted small">Location</div>
+                      </div>
+                      <div>
+                        <div class="text-value">Above</div>
+                        <div class="text-uppercase text-muted small">Average</div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            
+              <div id="card_5" class="col-sm-6 col-lg-3">
+                  <div class="brand-card">
+                    <div class="brand-card-header bg-danger">
+                      <div class="text-value text-center">sensor</div>
+                      <div class="chart-wrapper">
+                        <canvas id="social-box-chart-1" height="90"></canvas>
+                      </div>
+                    </div>
+                    <div class="brand-card-body">
+                      <div>
+                        <div class="text-value">2</div>
+                        <div class="text-uppercase text-muted small">Location</div>
+                      </div>
+                      <div>
+                        <div class="text-value">Above</div>
+                        <div class="text-uppercase text-muted small">Average</div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              
+             <div id="card_6" class="col-sm-6 col-lg-3">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-danger">
+                    <div class="text-value text-center">sensor</div>
+                    <div class="chart-wrapper">
+                      <canvas id="social-box-chart-1" height="90"></canvas>
+                    </div>
+                  </div>
+                  <div class="brand-card-body">
+                    <div>
+                      <div class="text-value">3</div>
+                      <div class="text-uppercase text-muted small">Location</div>
+                    </div>
+                    <div>
+                      <div class="text-value">Above</div>
+                      <div class="text-uppercase text-muted small">Average</div>
+                    </div>
+                  </div>
+                </div>
+             </div>
+  
+             <div id="card_7" class="col-sm-6 col-lg-3">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-danger">
+                    <div class="text-value text-center">sensor</div>
+                    <div class="chart-wrapper">
+                      <canvas id="social-box-chart-1" height="90"></canvas>
+                    </div>
+                  </div>
+                  <div class="brand-card-body">
+                    <div>
+                      <div class="text-value">4</div>
+                      <div class="text-uppercase text-muted small">Location</div>
+                    </div>
+                    <div>
+                      <div class="text-value">Above</div>
+                      <div class="text-uppercase text-muted small">Average</div>
+                    </div>
+                  </div>
+                </div>
+             </div>
+              <!-- Dew Point Card /-->
+
+              <div id="card_8" class="col-sm-6 col-lg-3">
+                  <div class="brand-card">
+                    <div class="brand-card-header bg-danger">
+                      <h1 class="text-value text-center">sensor</h1>
+                      <div class="chart-wrapper">
+                        <canvas id="social-box-chart-1" height="90"></canvas>
+                      </div>
+                    </div>
+                    <div class="brand-card-body">
+                      <div>
+                        <div class="text-value">1</div>
+                        <div class="text-uppercase text-muted small">Location</div>
+                      </div>
+                      <div>
+                        <div class="text-value">Above</div>
+                        <div class="text-uppercase text-muted small">Average</div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            
+              <div id="card_9" class="col-sm-6 col-lg-3">
+                  <div class="brand-card">
+                    <div class="brand-card-header bg-danger">
+                      <div class="text-value text-center">sensor</div>
+                      <div class="chart-wrapper">
+                        <canvas id="social-box-chart-1" height="90"></canvas>
+                      </div>
+                    </div>
+                    <div class="brand-card-body">
+                      <div>
+                        <div class="text-value">2</div>
+                        <div class="text-uppercase text-muted small">Location</div>
+                      </div>
+                      <div>
+                        <div class="text-value">Above</div>
+                        <div class="text-uppercase text-muted small">Average</div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              
+             <div id="card_10" class="col-sm-6 col-lg-3">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-danger">
+                    <div class="text-value text-center">sensor</div>
+                    <div class="chart-wrapper">
+                      <canvas id="social-box-chart-1" height="90"></canvas>
+                    </div>
+                  </div>
+                  <div class="brand-card-body">
+                    <div>
+                      <div class="text-value">3</div>
+                      <div class="text-uppercase text-muted small">Location</div>
+                    </div>
+                    <div>
+                      <div class="text-value">Above</div>
+                      <div class="text-uppercase text-muted small">Average</div>
+                    </div>
+                  </div>
+                </div>
+             </div>
+  
+             <div id="card_11" class="col-sm-6 col-lg-3">
+                <div class="brand-card">
+                  <div class="brand-card-header bg-danger">
+                    <div class="text-value text-center">sensor</div>
+                    <div class="chart-wrapper">
+                      <canvas id="social-box-chart-1" height="90"></canvas>
+                    </div>
+                  </div>
+                  <div class="brand-card-body">
+                    <div>
+                      <div class="text-value">4</div>
+                      <div class="text-uppercase text-muted small">Location</div>
+                    </div>
+                    <div>
+                      <div class="text-value">Above</div>
+                      <div class="text-uppercase text-muted small">Average</div>
+                    </div>
+                  </div>
+                </div>
+             </div>
+          
+          <!-- /.Humidity cards-->
+
+          <div id="card_12" class="col-sm-6 col-lg-3">
+              <div class="brand-card">
+                <div class="brand-card-header bg-danger">
+                  <h1 class="text-value text-center">sensor</h1>
+                  <div class="chart-wrapper">
+                    <canvas id="social-box-chart-1" height="90"></canvas>
+                  </div>
+                </div>
+                <div class="brand-card-body">
+                  <div>
+                    <div class="text-value">1</div>
+                    <div class="text-uppercase text-muted small">Location</div>
+                  </div>
+                  <div>
+                    <div class="text-value">Above</div>
+                    <div class="text-uppercase text-muted small">Average</div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        
+          <div id="card_13" class="col-sm-6 col-lg-3">
+              <div class="brand-card">
+                <div class="brand-card-header bg-danger">
+                  <div class="text-value text-center">Co2</div>
+                  <div class="chart-wrapper">
+                    <canvas id="social-box-chart-1" height="90"></canvas>
+                  </div>
+                </div>
+                <div class="brand-card-body">
+                  <div>
+                    <div class="text-value">2</div>
+                    <div class="text-uppercase text-muted small">Location</div>
+                  </div>
+                  <div>
+                    <div class="text-value">Above</div>
+                    <div class="text-uppercase text-muted small">Average</div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          
+         <div id="card_14" class="col-sm-6 col-lg-3">
+            <div class="brand-card">
+              <div class="brand-card-header bg-danger">
+                <div class="text-value text-center">Co2</div>
+                <div class="chart-wrapper">
+                  <canvas id="social-box-chart-1" height="90"></canvas>
+                </div>
+              </div>
+              <div class="brand-card-body">
+                <div>
+                  <div class="text-value">3</div>
+                  <div class="text-uppercase text-muted small">Location</div>
+                </div>
+                <div>
+                  <div class="text-value">Above</div>
+                  <div class="text-uppercase text-muted small">Average</div>
+                </div>
+              </div>
+            </div>
+         </div>
+
+         <div id="card_15" class="col-sm-6 col-lg-3">
+            <div class="brand-card">
+              <div class="brand-card-header bg-danger">
+                <div class="text-value text-center">Co2</div>
+                <div class="chart-wrapper">
+                  <canvas id="social-box-chart-1" height="90"></canvas>
+                </div>
+              </div>
+              <div class="brand-card-body">
+                <div>
+                  <div class="text-value">4</div>
+                  <div class="text-uppercase text-muted small">Location</div>
+                </div>
+                <div>
+                  <div class="text-value">Above</div>
+                  <div class="text-uppercase text-muted small">Average</div>
+                </div>
+              </div>
+            </div>
+         </div>
+
+          <!-- /.row-->
+        </div>
+      </div>
+    </main>
+
+    <!-- state script -->
+    <script src="/src/js/stateScript.js"></script>
+    
+    <!-- CoreUI and necessary plugins-->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/pace-progress/pace.min.js"></script>
+    <script src="node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+    <script src="node_modules/@coreui/coreui/dist/js/coreui.min.js"></script>
+    <!-- Plugins and scripts required by this view-->
+    <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+    <script src="node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
